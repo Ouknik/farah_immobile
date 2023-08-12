@@ -1,0 +1,9 @@
+{
+  "build": {
+    "type": "go",
+    "goal": "install"
+  },
+  "deploy": {
+    "web": "bin/main.go"
+  }
+}
