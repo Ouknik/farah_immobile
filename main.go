@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
 
@@ -149,16 +148,8 @@ func main() {
 		}
 
 		w.Header().Set("Content-Type", "application/json")
-		err := json.NewEncoder(w).Encode(apiResponse)
-		if err != nil {
-			http.Error(w, "Error encoding JSON", http.StatusInternalServerError)
-			return
-		}
+		json.NewEncoder(w).Encode(apiResponse)
 	})
 
-	fmt.Println("Server is listening on :8080...")
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		fmt.Println("Error starting the server:", err)
-	}
+	http.ListenAndServe(":8080", nil)
 }
